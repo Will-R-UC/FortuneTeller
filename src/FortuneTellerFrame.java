@@ -3,7 +3,9 @@ import java.awt.*;
 
 public class FortuneTellerFrame extends JFrame {
 
-    Font font = new Font("Apple Chancery", Font.PLAIN, 36);
+    Font titleFont = new Font("Apple Chancery", Font.PLAIN, 36);
+    Font listFont = new Font("American Typewriter", Font.PLAIN, 25);
+    Font buttonFont = new Font("Sans Serif", Font.PLAIN, 16);
     final Color VERY_LIGHT_BLUE = new Color(237, 246, 249);
     final Color GREY = new Color(49, 54, 55);
     final Color OFF_WHITE = new Color(253, 254, 254);
@@ -13,10 +15,20 @@ public class FortuneTellerFrame extends JFrame {
 
     public FortuneTellerFrame() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setTitle("Fortune Teller");
-        setSize(800,600);
-        setLocationRelativeTo(null);
+        adjustSelf();
         createGUI();
+    }
+
+    private void adjustSelf() {
+        Toolkit kit = Toolkit.getDefaultToolkit();
+        Dimension screenSize = kit.getScreenSize();
+        int screenHeight = screenSize.height;
+        int screenWidth = screenSize.width;
+
+        setSize(3 * screenWidth / 4, 3 * screenHeight / 4);
+        setLocation(screenWidth / 8, screenHeight / 8);
+
+        setTitle("Fortune Teller");
     }
 
     private void createGUI() {
@@ -37,7 +49,7 @@ public class FortuneTellerFrame extends JFrame {
         JLabel title = new JLabel("Fortune Teller", magicBallIcon, JLabel.CENTER);
         title.setVerticalTextPosition(JLabel.BOTTOM);
         title.setHorizontalTextPosition(JLabel.CENTER);
-        title.setFont(font);
+        title.setFont(titleFont);
         title.setForeground(GREY);
         top.add(title, BorderLayout.CENTER);
 
@@ -46,10 +58,12 @@ public class FortuneTellerFrame extends JFrame {
         main.add(center);
 
         JTextArea fortuneList = new JTextArea();
-        fortuneList.setFont(font.deriveFont(22f));
+        fortuneList.setFont(listFont);
         fortuneList.setBackground(OFF_WHITE);
         fortuneList.setEditable(false);
         center.setViewportView(fortuneList);
+
+        fortuneList.setText("blah\nthe quick brown fox");
 
         //bottom panel
         JPanel bottom = new JPanel();
@@ -59,6 +73,15 @@ public class FortuneTellerFrame extends JFrame {
 
         JButton readFortuneButton = new JButton("Read My Fortune!");
         JButton quitButton = new JButton("Quit");
+
+        readFortuneButton.setPreferredSize(new Dimension(200, 80));
+        quitButton.setPreferredSize(new Dimension(100, 80));
+
+        readFortuneButton.setFont(buttonFont);
+        quitButton.setFont(buttonFont);
+
+        readFortuneButton.setBackground(OFF_WHITE);
+        quitButton.setBackground(OFF_WHITE);
 
         bottom.add(readFortuneButton);
         bottom.setOpaque(false);
