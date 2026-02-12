@@ -82,9 +82,11 @@ public class FortuneTellerFrame extends JFrame {
         quitButton.setBackground(OFF_WHITE);
 
         final ReadFortuneAction readFortuneAction = new ReadFortuneAction(fortuneList);
-        readFortuneButton.addActionListener(readFortuneAction);
-        final QuitAction quitAction = new QuitAction();
-        quitButton.addActionListener(quitAction);
+        readFortuneButton.addActionListener(e -> readFortuneAction.actionPerformed(e)); // implemented with a Java 8 Lambda Expression to meet assignment requirements.
+
+        quitButton.addActionListener(e -> {
+            System.exit(0);
+        });
 
         bottom.add(readFortuneButton);
         bottom.setOpaque(false);
