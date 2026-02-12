@@ -4,8 +4,8 @@ import java.awt.*;
 public class FortuneTellerFrame extends JFrame {
 
     Font titleFont = new Font("Apple Chancery", Font.PLAIN, 36);
-    Font listFont = new Font("American Typewriter", Font.PLAIN, 25);
-    Font buttonFont = new Font("Sans Serif", Font.PLAIN, 16);
+    Font listFont = new Font("Sans Serif", Font.PLAIN, 20);
+    Font buttonFont = new Font("JetBrains Mono", Font.PLAIN, 16);
     final Color VERY_LIGHT_BLUE = new Color(237, 246, 249);
     final Color GREY = new Color(49, 54, 55);
     final Color OFF_WHITE = new Color(253, 254, 254);
