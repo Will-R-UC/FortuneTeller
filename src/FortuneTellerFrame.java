@@ -63,8 +63,6 @@ public class FortuneTellerFrame extends JFrame {
         fortuneList.setEditable(false);
         center.setViewportView(fortuneList);
 
-        fortuneList.setText("blah\nthe quick brown fox");
-
         //bottom panel
         JPanel bottom = new JPanel();
         bottom.setPreferredSize(new Dimension(0,160));
@@ -82,6 +80,11 @@ public class FortuneTellerFrame extends JFrame {
 
         readFortuneButton.setBackground(OFF_WHITE);
         quitButton.setBackground(OFF_WHITE);
+
+        final ReadFortuneAction readFortuneAction = new ReadFortuneAction(fortuneList);
+        readFortuneButton.addActionListener(readFortuneAction);
+        final QuitAction quitAction = new QuitAction();
+        quitButton.addActionListener(quitAction);
 
         bottom.add(readFortuneButton);
         bottom.setOpaque(false);
