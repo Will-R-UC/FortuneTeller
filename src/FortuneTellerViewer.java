@@ -1,8 +1,10 @@
-import javax.swing.*;
+import javax.swing.SwingUtilities;
 
 public class FortuneTellerViewer {
     static void main() {
-        FortuneTellerFrame window = new FortuneTellerFrame();
-        window.setVisible(true);
+        SwingUtilities.invokeLater(() -> {
+            FortuneTellerFrame window = new FortuneTellerFrame();
+            window.setVisible(true);
+        });
     }
 }
