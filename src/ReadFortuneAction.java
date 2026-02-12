@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class ReadFortuneAction implements ActionListener {
-    Random rand = new Random();
+    final Random rand = new Random();
+    int index = -1;
 
     final String[] fortunes = {
             "You will be attacked by a flock of birds on your way home soon.",
@@ -31,6 +32,11 @@ public class ReadFortuneAction implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent ae) {
-        fortuneList.append(fortunes[rand.nextInt(12)] + "\n");
+        int lastIndex = index;
+        do {
+            index = rand.nextInt(12);
+        } while (index == lastIndex);
+
+        fortuneList.append(fortunes[index] + "\n");
     }
 }
